@@ -1,0 +1,20 @@
+#server config
+server:
+  port: 8060
+  tomcat:
+    max-swallow-size: -1
+
+
+# swagger config
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+## MULTIPART (MultipartProperties)
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+      resolve-lazily: true
