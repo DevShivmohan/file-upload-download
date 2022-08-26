@@ -7,7 +7,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.net.MalformedURLException;
 
 public interface FileService {
     ResponseEntity<?> uploadFile(final MultipartFile multipartFile) throws IOException, GenericException;
