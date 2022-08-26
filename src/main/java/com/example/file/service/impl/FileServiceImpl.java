@@ -42,7 +42,7 @@ public class FileServiceImpl implements FileService {
         var resource=new UrlResource(path.resolve(fileRequestDTO.getFileName()).toUri());
         if(!(resource.exists() || resource.isReadable()))
             throw new GenericException(HttpStatus.NOT_FOUND.value(), "File does not exists");
-        return ResponseEntity.ok().contentType(MediaType.parseMediaType("application/octet-stream"))
+        return ResponseEntity.ok().contentType(MediaType.APPLICATION_OCTET_STREAM)
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + path.resolve(fileRequestDTO.getFileName()).toFile().getAbsolutePath() + "\"").body(resource);
     }
 
