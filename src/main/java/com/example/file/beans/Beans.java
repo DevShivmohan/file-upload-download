@@ -12,8 +12,9 @@ public class Beans {
 
     @Bean
     public Path getServerDownloadPath(){
-        File file= new File(System.getProperty("user.home")+ File.separator+"file_uploads");
+        File file= new File(System.getProperty("user.dir")+ File.separator+"file_uploads");
         file.mkdirs();
+        System.out.println(file.getAbsolutePath());
         return Paths.get(file.getAbsolutePath());
     }
 }

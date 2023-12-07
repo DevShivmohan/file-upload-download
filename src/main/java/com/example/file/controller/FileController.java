@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @RestController
@@ -27,8 +27,9 @@ public class FileController {
     }
 
     @GetMapping("/download")
-    public ResponseEntity<?> downloadFile(FileRequestDTO fileRequestDTO, HttpServletRequest request) throws IOException, GenericException {
+    public ResponseEntity<?> downloadFile(FileRequestDTO fileRequestDTO, HttpServletResponse httpServletResponse) throws IOException, GenericException {
         log.info("Download file api hits");
-        return fileService.downloadFile(fileRequestDTO,request);
+        fileService.downloadFileByHttpOutputStream(fileRequestDTO,httpServletResponse);
+        return ResponseEntity.ok().build();
     }
 }
